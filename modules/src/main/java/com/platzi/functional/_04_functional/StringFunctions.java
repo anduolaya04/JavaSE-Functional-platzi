@@ -8,15 +8,14 @@ import java.util.function.UnaryOperator;
 
 public class StringFunctions {
     public static void main(String[] args) {
-        UnaryOperator<String> quote = text -> "\"" + text + "\"";
-        UnaryOperator<String> addMark = text -> text + "!";
-        System.out.println(quote.apply("Hola Estudiante de platzi!"));
+        UnaryOperator<String> quote = text -> "\"" + text +"\"";
+        UnaryOperator<String> addMark = text -> text +"!";
+        System.out.println(addMark.apply(quote.apply("Hola")));
+        BiFunction<String, Integer, String> multiplicacion = (y,x) -> String.format( "%" + x + "s", y );
 
-        System.out.println(addMark.apply("Hola"));
+        System.out.println(multiplicacion.apply( "java", 10 ));
 
-        BiFunction<String, Integer, String> leftPad =
-                (text, number) -> String.format("%" + number + "s", text);
+        List<BiFunction<String, Integer, String>> formateadores;
 
-        System.out.println(leftPad.apply("Java", 10));
     }
 }
